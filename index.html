@@ -5,23 +5,165 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aryan Lokhande | AI & Data Science</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Poppins', sans-serif; background-color: #F9FAFB; color: #1F2937; scroll-behavior: smooth; }
-    nav { background-color: #1E3A8A; }
-    nav a { color: white !important; font-weight: 500; }
-    .hero { background: linear-gradient(rgba(30,58,138,0.85), rgba(30,58,138,0.85)), url('https://images.unsplash.com/photo-1557683316-973673baf926') center/cover no-repeat; color: white; padding: 120px 0; text-align: center; }
-    .hero h1 { font-size: 3rem; font-weight: 700; }
-    .hero p { font-size: 1.3rem; }
-    section { padding: 60px 0; }
-    h2 { color: #1E3A8A; font-weight: 600; }
-    .project-card, .pub-card { border-radius: 15px; border: 1px solid #E5E7EB; box-shadow: 0 3px 10px rgba(0,0,0,0.05); padding: 20px; background: white; }
-    .btn-primary { background-color: #2563EB; border: none; }
-    .btn-primary:hover { background-color: #1E40AF; }
-    footer { background-color: #111827; color: #E5E7EB; text-align: center; padding: 30px 0; margin-top: 60px; }
-    footer a { color: #93C5FD; text-decoration: none; font-weight: 500; }
-    footer a:hover { color: #60A5FA; text-decoration: underline; }
-    @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } }
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #8b5cf6;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --surface: rgba(255, 255, 255, 0.85);
+      --border: rgba(148, 163, 184, 0.25);
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-main);
+      background: radial-gradient(circle at top left, #dbeafe 0%, #eff6ff 30%, #f8fafc 70%);
+    }
+
+    nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 24px rgba(15, 23, 42, 0.2);
+    }
+
+    nav a { color: #ffffff !important; font-weight: 500; }
+
+    .hero {
+      position: relative;
+      color: white;
+      padding: 150px 0 120px;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.92), rgba(91, 33, 182, 0.82)),
+        url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 70px;
+      background: linear-gradient(to top, #f8fafc 10%, rgba(248, 250, 252, 0));
+    }
+
+    .hero .container { position: relative; z-index: 2; }
+
+    .hero h1 { font-size: 3rem; font-weight: 700; letter-spacing: 0.3px; }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin: 14px auto 0;
+      max-width: 760px;
+      color: rgba(241, 245, 249, 0.95);
+    }
+
+    .hero-badges {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge-pill {
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.15);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    .btn-glow {
+      box-shadow: 0 10px 24px rgba(59, 130, 246, 0.35);
+      border: none;
+    }
+
+    section { padding: 68px 0; }
+
+    h2 {
+      color: #0f172a;
+      font-weight: 650;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    .glass-card {
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      background: var(--surface);
+      backdrop-filter: blur(4px);
+      height: 100%;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.13);
+    }
+
+    .soft-section {
+      background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.9));
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .project-card h5,
+    .pub-card h5,
+    .blog-card h5 { font-weight: 600; }
+
+    .project-card p,
+    .pub-card p,
+    .blog-card p { color: #334155; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border: none;
+    }
+
+    .btn-primary:hover { filter: brightness(0.95); }
+
+    .timeline li { margin-bottom: 10px; color: #1e293b; }
+
+    .skill-list li {
+      background: rgba(37, 99, 235, 0.09);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      padding: 10px 12px;
+      list-style: none;
+    }
+
+    footer {
+      background-color: #0f172a;
+      color: #e2e8f0;
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 45px;
+    }
+
+    footer a { color: #93c5fd; text-decoration: none; font-weight: 500; }
+    footer a:hover { color: #dbeafe; text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .hero { padding: 130px 0 100px; }
+      .hero h1 { font-size: 2.25rem; }
+      .hero p { font-size: 1.05rem; }
+    }
   </style>
 </head>
 <body>
@@ -39,6 +181,7 @@
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blogs">Blogs</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -48,23 +191,34 @@
 <section class="hero">
   <div class="container">
     <h1>Aryan Lokhande</h1>
-    <p>AI & Data Science Undergraduate | Machine Learning | Problem Solving</p>
-    <a href="assets/pdf/Aryan_Lokhande_CV.pdf" class="btn btn-light btn-lg mt-3" target="_blank" rel="noopener">📄 View CV</a>
-    <a href="assets/pdf/Aryan_Lokhande_CV.pdf" class="btn btn-outline-light btn-lg mt-3" download>⬇️ Download CV</a>
+    <p>AI & Data Science Undergraduate building practical, high-impact machine learning systems and intelligent products.</p>
+    <div class="hero-badges">
+      <span class="badge-pill">Machine Learning</span>
+      <span class="badge-pill">Deep Learning</span>
+      <span class="badge-pill">Computer Vision</span>
+      <span class="badge-pill">Data Science</span>
+    </div>
+    <div class="mt-4 d-flex justify-content-center flex-wrap gap-2">
+      <a href="assets/pdf/Aryan_Lokhande_CV.pdf" class="btn btn-light btn-lg btn-glow" target="_blank" rel="noopener">📄 View CV</a>
+      <a href="assets/pdf/Aryan_Lokhande_CV.pdf" class="btn btn-outline-light btn-lg" download>⬇️ Download CV</a>
+    </div>
   </div>
 </section>
 
   <section id="about">
     <div class="container">
-      <h2 class="mb-4">About Me</h2>
-      <p>Hello! I’m Aryan Lokhande, currently pursuing my B.Tech in Artificial Intelligence and Data Science at Vishwakarma Institute of Technology, Pune. I’m deeply interested in building intelligent systems that make data-driven decisions and simplify complex problems. I love experimenting with new technologies, understanding how things work under the hood, and turning ideas into working prototypes. My goal is to grow into a developer and researcher who builds impactful, human-centered AI solutions.</p>
+      <h2>About Me</h2>
+      <p class="section-subtitle">I’m a B.Tech student in Artificial Intelligence and Data Science at Vishwakarma Institute of Technology, Pune. I enjoy building intelligent systems that solve real-world problems using data, automation, and thoughtful user-centered design.</p>
+      <div class="glass-card">
+        <p class="mb-0">I love experimenting with new technologies, understanding systems deeply, and turning ideas into polished prototypes. My long-term goal is to grow into a developer-researcher building impactful AI products that are useful, reliable, and human-friendly.</p>
+      </div>
     </div>
   </section>
 
-  <section id="education" class="bg-light">
+  <section id="education" class="soft-section">
     <div class="container">
-      <h2 class="mb-4">Education</h2>
-      <ul>
+      <h2>Education</h2>
+      <ul class="timeline">
         <li><strong>B.Tech in Artificial Intelligence & Data Science</strong> — Vishwakarma Institute of Technology, Pune (2023 - Present)</li>
         <li><strong>12th (Science)</strong> — Garware College of Science and Arts (2021 - 2023)</li>
         <li><strong>10th</strong> — Dr. Kalmadi Shamarao High School (2011 - 2021)</li>
@@ -74,74 +228,77 @@
 
   <section id="skills">
     <div class="container">
-      <h2 class="mb-4">Skills</h2>
-      <div class="row">
+      <h2>Skills</h2>
+      <div class="row g-4">
         <div class="col-md-6">
-          <h5>Technical Skills</h5>
-          <ul>
-            <li>Python, SQL, AWS</li>
-            <li>Machine Learning, Deep Learning, Data Science</li>
-            <li>PyTorch, OpenCV, MediaPipe</li>
-            <li>Blockchain & IPFS Applications</li>
-          </ul>
+          <div class="glass-card">
+            <h5>Technical Skills</h5>
+            <ul class="skill-list ps-0 mb-0">
+              <li>Python, SQL, AWS</li>
+              <li>Machine Learning, Deep Learning, Data Science</li>
+              <li>PyTorch, OpenCV, MediaPipe</li>
+              <li>Languages: C/C++, Java</li>
+            </ul>
+          </div>
         </div>
         <div class="col-md-6">
-          <h5>Soft Skills</h5>
-          <ul>
-            <li>Analytical Thinking & Problem Solving</li>
-            <li>Teamwork & Communication</li>
-            <li>Leadership & Adaptability</li>
-            <li>Attention to Detail & Documentation</li>
-          </ul>
+          <div class="glass-card">
+            <h5>Soft Skills</h5>
+            <ul class="skill-list ps-0 mb-0">
+              <li>Analytical Thinking & Problem Solving</li>
+              <li>Teamwork & Communication</li>
+              <li>Leadership & Adaptability</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="projects" class="bg-light">
+  <section id="projects" class="soft-section">
     <div class="container">
-      <h2 class="mb-4">Projects</h2>
+      <h2>Projects</h2>
       <div class="row g-4">
         <div class="col-md-6">
-          <div class="project-card">
+          <div class="project-card glass-card">
             <h5>🏎️ F1 Race & Tyre Strategy Predictor</h5>
             <p>Built a predictive model to forecast race outcomes and tyre strategies using LSTM networks trained on historical Formula 1 data.</p>
             <a href="https://github.com/Aryan-Lokhande-17/F1-race-strat-predictor" class="btn btn-primary btn-sm">GitHub</a>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="project-card">
+          <div class="project-card glass-card">
             <h5>♟️ Chess Engine (ResNet + MCTS)</h5>
             <p>Developed a deep learning chess engine using PyTorch and Monte Carlo Tree Search, enabling intelligent move selection and strategy learning through self-play.</p>
             <a href="https://github.com/Aryan-Lokhande-17/Chess-Engine" class="btn btn-primary btn-sm">GitHub</a>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="project-card">
+          <div class="project-card glass-card">
             <h5>🌊 OceanFront – Intelligent Ocean Monitoring</h5>
             <p>Created an AI-powered system that analyzes parameters like salinity and temperature to study oceanic behavior and climate insights.</p>
             <a href="https://github.com/Aryan-Lokhande-17/OceanFront" class="btn btn-primary btn-sm">GitHub</a>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="project-card">
+          <div class="project-card glass-card">
             <h5>🌾 KisaanSarthi</h5>
             <p>Designed a farmer-assistance app that detects crop diseases, tracks weather and market trends, and connects users to government schemes.</p>
             <a href="https://github.com/RajwardhanMali/KisaanSathi" class="btn btn-primary btn-sm">GitHub</a>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="project-card">
+          <div class="project-card glass-card">
             <h5>🎓 Student Management System (Blockchain)</h5>
             <p>Built a blockchain-based student record verification system with IPFS storage, enhancing transparency and data integrity.</p>
             <a href="https://github.com/Aryan-Lokhande-17/Student-Credential-Distribution-system" class="btn btn-primary btn-sm">GitHub</a>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="project-card">
+          <div class="project-card glass-card">
             <h5>🏋️ Gym-AI</h5>
             <p>Developed a computer vision–based exercise correction assistant using OpenCV and MediaPipe to track posture and count reps in real time.</p>
-            <a href="https://github.com/Aryan-Lokhande-17/Gym-AI" class="btn btn-primary btn-sm">GitHub</a>
+            <span class="text-muted small">GitHub link removed</span>
           </div>
         </div>
       </div>
@@ -150,14 +307,14 @@
 
   <section id="publications">
     <div class="container">
-      <h2 class="mb-4">Publications</h2>
-      <div class="pub-card mb-3">
+      <h2>Publications</h2>
+      <div class="pub-card glass-card mb-3">
         <h5>Student Management System using Blockchain (2025)</h5>
         <p><em>GRENZE International Journal of Engineering and Technology</em></p>
         <p>Co-authors: Prof. Dr. Shital Dongre, Aryan G. Lokhande, Vedang A. Mahajan, Lochan K. Gabhane</p>
         <a href="https://thegrenze.com/index.php?display=page&view=journalabstract&absid=6061&id=8" class="btn btn-primary btn-sm">View Publication</a>
       </div>
-      <div class="pub-card">
+      <div class="pub-card glass-card">
         <h5>Gym-AI: A Computer Vision-Based Exercise Form Correction Assistant (2024)</h5>
         <p><em>Mukt Shabd Journal</em></p>
         <p>Co-authors: Prof. Amruta Bhawarthi, Aryan Lokhande, Devraj Lokhande, Lochan Gabhane, Ajinkya Lende, Pradhynan L</p>
@@ -166,9 +323,25 @@
     </div>
   </section>
 
-  <section id="contact" class="bg-light">
+  <section id="blogs" class="soft-section">
+    <div class="container">
+      <h2>Blogs</h2>
+      <p class="section-subtitle">I’ll be sharing write-ups about my projects, experiments, and lessons from AI development.</p>
+      <div class="row g-4">
+        <div class="col-md-8 col-lg-6">
+          <div class="blog-card glass-card">
+            <h5>📝 Reinforcement Learning vs Deep Learning</h5>
+            <p class="mb-3">A short comparison of reinforcement learning and deep learning with practical context and key differences.</p>
+            <a href="https://medium.com/@aryanlokhande51/reinforcement-learning-vs-deep-learning-9fe5abee78b8" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Read on Medium</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
     <div class="container text-center">
-      <h2 class="mb-4">Contact</h2>
+      <h2>Contact</h2>
       <p>📧 <a href="mailto:aryanlokhande51@gmail.com">aryanlokhande51@gmail.com</a></p>
       <p>💼 <a href="https://www.linkedin.com/in/aryan-g-lokhande/" target="_blank" rel="noopener">LinkedIn: Aryan G. Lokhande</a></p>
       <p>🌐 <a href="https://github.com/Aryan-Lokhande-17" target="_blank" rel="noopener">GitHub: Aryan-Lokhande-17</a></p>
